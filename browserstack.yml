@@ -1,0 +1,16 @@
+userName: mohammedtaher3
+accessKey: zzrpfakxLdpeBWmsSTzB
+framework: testng
+platforms:
+  - os: Windows
+    osVersion: 10
+    browserName: Chrome
+    browserVersion: latest
+  - os: Windows
+    osVersion: 10
+    browserName: Firefox
+    browserVersion: 102.0
+  - os: OS X
+    osVersion: Big Sur
+    browserName: Safari
+    browserVersion: 14.1

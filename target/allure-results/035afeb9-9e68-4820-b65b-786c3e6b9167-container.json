@@ -1,0 +1,1 @@
+{"uuid":"035afeb9-9e68-4820-b65b-786c3e6b9167","name":"SeleniumJAVA_TAF","children":["6ad7e576-f7d0-47ab-9c66-521e33ecda5f"],"befores":[{"name":"setUp","status":"passed","stage":"finished","description":"","steps":[],"attachments":[],"parameters":[],"start":1670527818415,"stop":1670527824303}],"afters":[],"start":1670527818367,"stop":1670527832406}

@@ -1,0 +1,16 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite parallel="tests" name="NopCommerce Suite" thread-count="2">
+  <test name="Chrome Test">
+    <parameter name="browserName" value="chrome"/>
+    <classes>
+      <class name="testRunner.Runner"/>
+    </classes>
+  </test> <!-- Test -->
+
+  <test name="Firefox Test">
+    <parameter name="browserName" value="firefox"/>
+    <classes>
+      <class name="testRunner.Runner"/>
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
