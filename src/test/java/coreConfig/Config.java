@@ -25,10 +25,11 @@ public class Config {
     protected String localBrowserName;
     protected String remoteBrowserName;
 
-    private static ThreadLocal<WebDriver> Driver;
+
+    private static ThreadLocal<WebDriver> Driver = new ThreadLocal<>();;
 
     public Config() throws IOException {
-        properties = readPropertyFile("properties/environment.properties");
+        properties = readPropertyFile("properties/ExecutionPlatform.properties");
         envType = EnvType.valueOf(properties.getProperty("ENV_TYPE"));
         URL = properties.getProperty("TEST_BASE_URL");
         localBrowserName = properties.getProperty("LOCAL_BROWSER_NAME");
@@ -51,14 +52,15 @@ public class Config {
     }
 
     public void localDriverInit(){
-        setDriver(DriverFactoryAbstract.getDriverFactory(DriverType.valueOf(localBrowserName.toUpperCase())).getDriver());
+        setDriver(DriverFactoryAbstract
+                .getDriverFactory(DriverType.valueOf(localBrowserName.toUpperCase()))
+                .getDriver());
         getDriver().navigate().to(URL);
         System.out.println("CURRENT THREAD: " + Thread.currentThread().getId() + ", " +
                 "DRIVER = " + getDriver());
     }
 
     public void gridInit(String browserName) throws MalformedURLException {
-        Driver = new ThreadLocal<>();
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("browserName", browserName);
         setDriver(new RemoteWebDriver(new URL(properties.getProperty("REMOTE_ENV_URL")), capabilities));
@@ -66,6 +68,8 @@ public class Config {
         getDriver().manage().window().maximize();
         getDriver().navigate().to(URL);
     }
+
+
 
     public void quitDriver(){
         getDriver().manage().deleteAllCookies();

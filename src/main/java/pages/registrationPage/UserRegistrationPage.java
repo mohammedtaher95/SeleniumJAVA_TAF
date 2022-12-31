@@ -36,6 +36,7 @@ public class UserRegistrationPage extends ElementActions
 	
 	public void userlogout()
 	{
+		waitForVisibility(logoutLink);
 		clickButton(logoutLink);
 	}
 	

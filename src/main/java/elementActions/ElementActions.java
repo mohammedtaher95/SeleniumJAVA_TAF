@@ -5,7 +5,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -21,7 +20,6 @@ public class ElementActions {
 
     public ElementActions(WebDriver driver){
         this.driver = driver;
-        PageFactory.initElements(driver, this);
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
     }
 
@@ -41,14 +39,12 @@ public class ElementActions {
 
     public void SelectItemByIndex(By by, int index)
     {
-        dropDown = new Select(driver.findElement(by));
-        dropDown.selectByIndex(index);
+        new Select(driver.findElement(by)).selectByIndex(index);
     }
 
     public void SelectItemByText(By by, String text)
     {
-        dropDown = new Select(driver.findElement(by));
-        dropDown.selectByVisibleText(text);
+        new Select(driver.findElement(by)).selectByVisibleText(text);
     }
 
     public String getElementText(By by){

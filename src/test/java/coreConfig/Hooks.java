@@ -36,7 +36,8 @@ public class Hooks{
     }
 
     @After(order = 2)
-    public void quittingDriver(){
+    public void quittingDriver() throws IOException {
         config.quitDriver();
+        Runtime.getRuntime().exec("generateAllureReport.bat");
     }
 }
