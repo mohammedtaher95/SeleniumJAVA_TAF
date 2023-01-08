@@ -1,6 +1,7 @@
 package elementActions;
 
 
+import driverFactory.Webdriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -13,27 +14,27 @@ import java.time.Duration;
 
 public class ElementActions {
 
-    private WebDriver driver;
+    private static WebDriver driver;
     public JavascriptExecutor JSE;
     public Select dropDown;
     public static WebDriverWait wait;
 
-    public ElementActions(WebDriver driver){
-        this.driver = driver;
+    public ElementActions(){
+        this.driver = Webdriver.getDriver();
         wait = new WebDriverWait(driver, Duration.ofSeconds(20));
     }
 
-    public void clickButton(By Btn){
+    public static void clickButton(By Btn){
         driver.findElement(Btn).click();
     }
 
-    public void Fill_in(By field, String value){
+    public static void Fill_in(By field, String value){
         WebElement Field = driver.findElement(field);
         Field.clear();
         Field.sendKeys(value);
     }
 
-    public boolean ElementDisplayed(By by){
+    public static boolean ElementDisplayed(By by){
         return driver.findElement(by).isDisplayed();
     }
 
@@ -51,7 +52,7 @@ public class ElementActions {
         return driver.findElement(by).getText();
     }
 
-    public void waitForVisibility(By by){
+    public static void waitForVisibility(By by){
         wait.until(ExpectedConditions.visibilityOfElementLocated(by));
     }
 }

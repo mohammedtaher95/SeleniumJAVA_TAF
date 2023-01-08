@@ -1,4 +1,4 @@
 @echo off
-allure serve target/surefire-reports
+allure serve target/allure-results
 pause
 exit
