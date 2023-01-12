@@ -38,17 +38,17 @@ public class ElementActions {
         return driver.findElement(by).isDisplayed();
     }
 
-    public void SelectItemByIndex(By by, int index)
+    public static void SelectItemByIndex(By by, int index)
     {
         new Select(driver.findElement(by)).selectByIndex(index);
     }
 
-    public void SelectItemByText(By by, String text)
+    public static void SelectItemByText(By by, String text)
     {
         new Select(driver.findElement(by)).selectByVisibleText(text);
     }
 
-    public String getElementText(By by){
+    public static String getElementText(By by){
         return driver.findElement(by).getText();
     }
 

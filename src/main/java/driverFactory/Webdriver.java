@@ -3,16 +3,14 @@ package driverFactory;
 import constants.CrossBrowserMode;
 import constants.DriverType;
 import constants.EnvType;
-import driverFactory.localDriver.ChromeDriverFactory;
-import driverFactory.localDriver.DriverAbstract;
-import driverFactory.localDriver.EdgeDriverFactory;
-import driverFactory.localDriver.FirefoxDriverFactory;
+import driverFactory.localDriver.*;
 import driverFactory.remoteDriver.GridConfig;
 import org.openqa.selenium.WebDriver;
 import org.testng.Reporter;
 import tools.properties.DefaultProperties;
 
 import java.io.IOException;
+import java.time.Duration;
 
 
 public class Webdriver {
@@ -36,39 +34,20 @@ public class Webdriver {
             //remoteDriverInit(browserName);
         }
 
-
-
         System.out.println("CURRENT THREAD: " + Thread.currentThread().getId() + ", " +
                 "DRIVER = " + getDriver());
-    }
 
-
-    public void localDriverInit(String browserName){
-        setDriver(getDriverFactory(DriverType.valueOf(browserName.toUpperCase()))
-                .getDriver());
+        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        getDriver().manage().window().maximize();
         getDriver().navigate().to(DefaultProperties.capabilities.baseURL());
     }
 
 
-
-    public static DriverAbstract getDriverFactory(DriverType driverType){
-        switch (driverType){
-            case CHROME:
-            {
-                return new ChromeDriverFactory();
-            }
-            case FIREFOX:
-            {
-                return new FirefoxDriverFactory();
-            }
-            case EDGE:
-            {
-                return new EdgeDriverFactory();
-            }
-            default:
-                throw new IllegalStateException("Unexpected value: " + driverType);
-        }
+    public void localDriverInit(String browserName){
+        setDriver(DriverFactory.getDriverFactory(DriverType.valueOf(browserName.toUpperCase()))
+                .getDriver());
     }
+
 
     public void quit() throws IOException {
         getDriver().manage().deleteAllCookies();

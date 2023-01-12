@@ -1,9 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite thread-count="2" name="WebDriver Suite" guice-stage="DEVELOPMENT">
-  <parameter name="CROSS_BROWSER_MODE" value="SEQUENTIAL"/>
-  <parameter name="ENV_TYPE" value="LOCAL"/>
-  <parameter name="REMOTE_ENV_URL" value="http://localhost:4444/wd/hub/"/>
+<suite thread-count="2" parallel="tests" name="WebDriver Suite">
   <test thread-count="1" name="Chrome Test">
     <parameter name="browserName" value="chrome"/>
     <classes>

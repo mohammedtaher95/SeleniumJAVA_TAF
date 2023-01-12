@@ -1,9 +1,6 @@
 package tools.listeners;
 
-//import driverFactory.Webdriver;
-
 import constants.CrossBrowserMode;
-import constants.EnvType;
 import driverFactory.Webdriver;
 import io.qameta.allure.Allure;
 import io.qameta.allure.Attachment;
@@ -13,7 +10,6 @@ import org.testng.xml.XmlSuite;
 import org.testng.xml.XmlTest;
 import tools.properties.DefaultProperties;
 import utilities.ScreenshotHelper;
-//import tools.utilities.ScreenshotHelper;
 
 
 import java.io.File;
@@ -23,10 +19,9 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Properties;
+
 
 import static tools.properties.PropertiesHandler.*;
-import static utilities.XmlGenerator.xmlSuiteGenerator;
 
 public class TestNGListener implements IAlterSuiteListener, ITestListener, ISuiteListener,
         IExecutionListener, IInvokedMethodListener {
@@ -36,13 +31,7 @@ public class TestNGListener implements IAlterSuiteListener, ITestListener, ISuit
 
     @Override
     public void onExecutionStart() {
-//        try {
-//            initializeProperties();
-//            //xmlSuiteGenerator();
-//
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
+
     }
 
     @Override

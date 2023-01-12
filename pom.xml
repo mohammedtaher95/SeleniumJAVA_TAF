@@ -194,9 +194,20 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>3.0.0-M5</version>
                 <configuration>
-                    <parallel>tests</parallel>
+                    <forkMode>never</forkMode>
+                    <properties>
+                        <property>
+                            <name>usedefaultlisteners</name>
+                            <value>false</value> <!-- disabling default listeners is optional -->
+                        </property>
+                        <property>
+                            <name>listener</name>
+                            <value>tools.listeners.TestNGListener</value>
+                        </property>
+                    </properties>
+<!--                    <parallel>tests</parallel>-->
 <!--                    <threadCount>2</threadCount>-->
-                    <suiteXmlFiles>TestNG.xml</suiteXmlFiles>
+<!--                    <suiteXmlFiles>TestNG.xml</suiteXmlFiles>-->
                     <!--suppress UnresolvedMavenProperty -->
                     <argLine>
                         -javaagent:${com.browserstack:browserstack-java-sdk:jar}

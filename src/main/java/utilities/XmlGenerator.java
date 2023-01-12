@@ -1,9 +1,6 @@
 package utilities;
 
 import constants.CrossBrowserMode;
-import org.testng.ITestContext;
-import org.testng.TestNG;
-
 import org.testng.xml.XmlClass;
 import org.testng.xml.XmlSuite;
 import org.testng.xml.XmlTest;
@@ -35,18 +32,10 @@ public class XmlGenerator {
             initializeNormalExecution();
         }
 
-        List<XmlSuite> suites = new ArrayList<>();
-        suites.add(suite);
-//        TestNG testng = new TestNG();
-//        testng.setXmlSuites(suites);
-
         Path destination = Paths.get(".", "TestNG.xml");
-        File newFile = new File("TestNG.xml");
         Files.delete(destination);
 
         Files.writeString(destination, suite.toXml());
-        //testng.setUseDefaultListeners(true);
-        //testng.run();
     }
 
     private static void initializeParallelExecution(){

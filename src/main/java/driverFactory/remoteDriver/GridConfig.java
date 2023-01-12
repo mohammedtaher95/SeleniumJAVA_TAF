@@ -37,8 +37,6 @@ public class GridConfig extends Webdriver {
                 getTestContext().getCurrentXmlTest().getParameter("browserName");
         capabilities.setCapability("browserName", browserName);
         setDriver(new RemoteWebDriver(new URL(DefaultProperties.platform.RemoteURL()), capabilities));
-        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        getDriver().manage().window().maximize();
-        getDriver().navigate().to(DefaultProperties.capabilities.baseURL());
+
     }
 }

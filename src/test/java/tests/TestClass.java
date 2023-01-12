@@ -2,8 +2,6 @@ package tests;
 
 import driverFactory.Webdriver;
 import io.qameta.allure.Description;
-import org.openqa.selenium.WebDriver;
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -18,14 +16,11 @@ public class TestClass {
     driverFactory.Webdriver driver;
 
     HomePage home;
-    UserRegistrationPage register;
     UserFormData newUser;
 
     @BeforeMethod(description = "Setup Driver")
     public void setUp() throws IOException {
-        //System.setProperty("TARGET_BROWSER_NAME", "firefox");
         driver = new Webdriver();
-
     }
 
     @Description("User can access registration page and register successfully")
