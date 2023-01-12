@@ -1,3 +1,6 @@
+def readEnvProp
+def readWebCap
+
 node {
     def mvnHome
     stage('Get latest Pulls') { // for display purposes
@@ -9,18 +12,23 @@ node {
         mvnHome = tool 'MAVEN_HOME'
     }
 
-    stage('Starting Grid') { // for display purposes
-        echo "ENV_TYPE=$Environment_Type" >> src/main/resources/properties/ExecutionPlatform.properties
-        echo "CROSS_BROWSER_MODE=$Cross_Browser_Mode" >> src/main/resources/properties/ExecutionPlatform.properties
-        echo "EXECUTION_METHOD=$Execution_Method" >> src/main/resources/properties/WebCapabilities.properties
-        echo "TARGET_BROWSER_NAME=$Target_Browser_Name" >> src/main/resources/properties/WebCapabilities.properties
+    stage('Setting up Environment') { // for display purposes
+        readEnvProp = readProperties file: 'src/main/resources/properties/ExecutionPlatform.properties'
+        readWebCap = readProperties file: 'src/main/resources/properties/WebCapabilities.properties'
+        readEnvProp.ENV_TYPE=params.Environment_Type
+        readEnvProp.CROSS_BROWSER_MODE=params.Cross_Browser_Mode
+        readWebCap.EXECUTION_METHOD=params.Execution_Method
+        readWebCap.TARGET_BROWSER_NAME=Target_Browser_Name
+
+        if(readEnvProp.ENV_TYPE=="GRID"){
             if (isUnix()) {
                 sh "docker-compose up -d"
             }
             else
             {
-               bat("docker-compose up -d")
+                bat("docker-compose up -d")
             }
+        }
     }
 
     stage('Clean Old Builds') {
@@ -44,7 +52,7 @@ node {
         }
     }
 
-    stage('Teardown Grid') { // for display purposes
+    stage('Teardown Environment') { // for display purposes
                 if (isUnix()) {
                     sh "docker-compose down"
                 }
