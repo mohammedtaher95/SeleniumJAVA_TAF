@@ -20,6 +20,12 @@ node {
         readWebCap.EXECUTION_METHOD = params.Execution_Method
         readWebCap.TARGET_BROWSER_NAME = params.Target_Browser_Name
 
+        writeEnv = readEnvProp.collect{"${it.key}=${it.value}"}.join('\n')
+        writeFile file: 'src/main/resources/properties/ExecutionPlatform.properties', text: writeEnv
+
+        writeCap = readWebCap.collect{"${it.key}=${it.value}"}.join('\n')
+        writeFile file: 'src/main/resources/properties/WebCapabilities.properties', text: writeCap
+
         if (readEnvProp.ENV_TYPE == "GRID") {
             if (isUnix()) {
                 sh "docker-compose up -d"
