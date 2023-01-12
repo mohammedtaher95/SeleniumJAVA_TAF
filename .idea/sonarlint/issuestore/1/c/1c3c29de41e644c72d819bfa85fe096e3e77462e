@@ -1,0 +1,8 @@
+
+k
+java:S2095"NUse try-with-resources or close this "FileOutputStream" in a "finally" clause.(¤û¬Û8³Š ÝÙ0
+W
+java:S1118":Add a private constructor to hide the implicit public one.(ôùšù8·Š ÝÙ0
+]	java:S125"<This block of commented-out lines of code should be removed.(Ú‡’²ùÿÿÿÿ8½Š ÝÙ0
+[
+java:S1128"9Remove this unused import 'java.io.ByteArrayInputStream'.(Ëôæ±ûÿÿÿÿ8¾Š ÝÙ0
