@@ -2,7 +2,7 @@ node {
     def mvnHome
     stage('Get latest Pulls') { // for display purposes
         // Get some code from a GitHub repository
-        git 'https://github.com/mohammedtaher95/SeleniumJavaPOMFramework.git'
+        git 'https://github.com/mohammedtaher95/SeleniumJAVA_TAF.git'
         // Get the Maven tool.
         // ** NOTE: This 'M3' Maven tool must be configured
         // **       in the global configuration.
