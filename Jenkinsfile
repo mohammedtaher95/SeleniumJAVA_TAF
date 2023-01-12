@@ -15,32 +15,30 @@ node {
     stage('Setting up Environment') { // for display purposes
         readEnvProp = readProperties file: 'src/main/resources/properties/ExecutionPlatform.properties'
         readWebCap = readProperties file: 'src/main/resources/properties/WebCapabilities.properties'
-        readEnvProp.ENV_TYPE=params.Environment_Type
-        readEnvProp.CROSS_BROWSER_MODE=params.Cross_Browser_Mode
-        readWebCap.EXECUTION_METHOD=params.Execution_Method
-        readWebCap.TARGET_BROWSER_NAME=Target_Browser_Name
+        readEnvProp.ENV_TYPE = params.Environment_Type
+        readEnvProp.CROSS_BROWSER_MODE = params.Cross_Browser_Mode
+        readWebCap.EXECUTION_METHOD = params.Execution_Method
+        readWebCap.TARGET_BROWSER_NAME = Target_Browser_Name
 
-        if(readEnvProp.ENV_TYPE=="GRID"){
+        if (readEnvProp.ENV_TYPE == "GRID") {
             if (isUnix()) {
                 sh "docker-compose up -d"
-            }
-            else
-            {
+            } else {
                 bat("docker-compose up -d")
             }
         }
     }
 
     stage('Clean Old Builds') {
-            // Run the maven build
-            withEnv(["MVN_HOME=$mvnHome"]) {
-                if (isUnix()) {
-                    sh '"$MVN_HOME/bin/mvn" clean'
-                } else {
-                    bat(/"%MVN_HOME%\bin\mvn" clean/)
-                }
+        // Run the maven build
+        withEnv(["MVN_HOME=$mvnHome"]) {
+            if (isUnix()) {
+                sh '"$MVN_HOME/bin/mvn" clean'
+            } else {
+                bat(/"%MVN_HOME%\bin\mvn" clean/)
             }
         }
+    }
     stage('Run Tests') {
         // Run the maven build
         withEnv(["MVN_HOME=$mvnHome"]) {
@@ -53,19 +51,20 @@ node {
     }
 
     stage('Teardown Environment') { // for display purposes
-                if (isUnix()) {
-                    sh "docker-compose down"
-                }
-                else
-                {
-                   bat("docker-compose down")
-                }
+        if (readEnvProp.ENV_TYPE == "GRID") {
+            if (isUnix()) {
+                sh "docker-compose down"
+            } else {
+                bat("docker-compose down")
+            }
         }
+
+    }
     stage('Results') {
         // testng '**/target/surefire-reports/TEST-*.xml'
         // archiveArtifacts 'target/*.jar'
         allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']]
         step([$class: 'Publisher', reportFilenamePattern: '**/testng-results.xml'])
-        
+
     }
 }
