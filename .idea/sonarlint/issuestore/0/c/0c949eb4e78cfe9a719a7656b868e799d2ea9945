@@ -1,9 +1,7 @@
 
-v	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÇèÔÏ8ÁŒ¤¡Ô0
-t	java:S116"XRename this field "ContactUsLink" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ıç¾8¤¤¡Ô0
-X	java:S125"<This block of commented-out lines of code should be removed.(Ú°à¬8Ó¤¡Ô0
-O
-java:S1128"2Remove this unused import 'io.qameta.allure.Step'.(—İâ¾8·€¯¹Ø0
-L
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÇèÔÏ
+m	java:S116"XRename this field "ContactUsLink" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ıç¾
+Q	java:S125 "<This block of commented-out lines of code should be removed.(Ú°à¬
+E
 java:S1068
-"*Remove this unused "driver" private field.(š…ŒÅøÿÿÿÿ8·€¯¹Ø0
+"*Remove this unused "driver" private field.(š…ŒÅøÿÿÿÿ

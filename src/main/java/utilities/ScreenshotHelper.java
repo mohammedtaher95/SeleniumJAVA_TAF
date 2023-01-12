@@ -18,8 +18,6 @@ public class ScreenshotHelper {
         Path destination = Paths.get("./screenshots", screenshotName + ".jpg");
         Files.createDirectories(destination.getParent());
         FileOutputStream outputStream = new FileOutputStream(destination.toString());
-        //outputStream.write();
-        //new ByteArrayInputStream(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES));
         outputStream.write(((TakesScreenshot) driver).getScreenshotAs(OutputType.BYTES));
         outputStream.close();
 

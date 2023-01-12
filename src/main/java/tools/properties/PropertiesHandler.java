@@ -43,6 +43,7 @@ public class PropertiesHandler {
             DefaultProperties.platform.store(outputStream, "#######################################################"
                     + "\n" + "########## TAF Execution Platform Properties ###########"
             + "\n" + "########################################################");
+            outputStream.close();
         }
 
         if(!capProperties.exists()){
@@ -50,6 +51,7 @@ public class PropertiesHandler {
             DefaultProperties.capabilities.store(outputStream, "######################################################"
                     + "\n" + "################ TAF Web Capabilities #################"
                     + "\n" + "#######################################################");
+            outputStream.close();
         }
     }
 

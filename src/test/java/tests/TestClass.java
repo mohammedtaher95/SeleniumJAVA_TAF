@@ -23,12 +23,15 @@ public class TestClass {
 
     @BeforeMethod(description = "Setup Driver")
     public void setUp() throws IOException {
+        //System.setProperty("TARGET_BROWSER_NAME", "firefox");
         driver = new Webdriver();
+
     }
 
     @Description("User can access registration page and register successfully")
     @Test(description = "User Register on website successfully")
     public void testMethod(){
+
         home = new HomePage(Webdriver.getDriver());
         newUser = new UserFormData();
         home.openRegistrationPage();

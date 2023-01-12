@@ -9,7 +9,8 @@ import java.io.FileOutputStream;
 import java.util.Properties;
 
 @LoadPolicy(Config.LoadType.MERGE)
-@Sources({"file:ExecutionPlatform.properties", "classpath:ExecutionPlatform.properties"})
+@Sources({"file:src/main/resources/properties/ExecutionPlatform.properties",
+        "classpath:src/main/resources/properties/ExecutionPlatform.properties"})
 public interface ExecutionPlatform extends Config, Accessible {
 
     @Key("ENV_TYPE")
@@ -17,7 +18,7 @@ public interface ExecutionPlatform extends Config, Accessible {
     String EnvironmentType();
 
     @Key("CROSS_BROWSER_MODE")
-    @DefaultValue("off")
+    @DefaultValue("OFF")
     String CrossBrowserMode();
 
     @Key("REMOTE_ENV_URL")

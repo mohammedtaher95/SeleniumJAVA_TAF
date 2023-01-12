@@ -1,0 +1,9 @@
+
+x
+java:S1104"VMake properties a static final constant or non-public and provide accessors if needed.(¡–Üıÿÿÿÿ8ƒ¹ŠäÙ0
+R
+java:S1444"0Make this "public static properties" field final(¡–Üıÿÿÿÿ8ƒ¹ŠäÙ0
+W
+java:S1118":Add a private constructor to hide the implicit public one.(Ç»•¯8‹¹ŠäÙ0
+G
+java:S2386"%Make member "properties" "protected".(É¼ùÿÿÿÿ8’¹ŠäÙ0

@@ -1,18 +1,22 @@
 package driverFactory.remoteDriver;
 
+import constants.DriverType;
 import driverFactory.Webdriver;
+import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
+import org.testng.ITestContext;
 import org.testng.Reporter;
+import org.testng.annotations.Optional;
+import org.testng.annotations.Parameters;
 import tools.properties.DefaultProperties;
+import utilities.XmlGenerator;
 
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.time.Duration;
 
-import static tools.listeners.TestNGListener.executionPlatform;
-import static tools.listeners.TestNGListener.*;
 
 public class GridConfig extends Webdriver {
 
@@ -21,16 +25,19 @@ public class GridConfig extends Webdriver {
     //Reporter.getCurrentTestResult().
     //                getTestContext().getCurrentXmlTest().getParameter("browserName")
 
+    static ITestContext context;
+
     public GridConfig() throws IOException {
     }
 
-    //@Parameters(value = {"browserName"})
+
     public static void gridInit() throws MalformedURLException {
         DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("browserName", Reporter.getCurrentTestResult().
-                            getTestContext().getCurrentXmlTest().getParameter("browserName"));
+        String browserName = Reporter.getCurrentTestResult().
+                getTestContext().getCurrentXmlTest().getParameter("browserName");
+        capabilities.setCapability("browserName", browserName);
         setDriver(new RemoteWebDriver(new URL(DefaultProperties.platform.RemoteURL()), capabilities));
-        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
+        getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         getDriver().manage().window().maximize();
         getDriver().navigate().to(DefaultProperties.capabilities.baseURL());
     }

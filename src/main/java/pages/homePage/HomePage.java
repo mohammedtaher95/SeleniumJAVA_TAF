@@ -17,6 +17,7 @@ public class HomePage extends ElementActions {
 		this.driver = driver;
 	}
 
+	@Step("Given user navigated to Registration page")
 	public void openRegistrationPage()
 	{
 		clickButton(registerLink);

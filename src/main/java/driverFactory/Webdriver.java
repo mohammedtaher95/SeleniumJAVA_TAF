@@ -9,18 +9,11 @@ import driverFactory.localDriver.EdgeDriverFactory;
 import driverFactory.localDriver.FirefoxDriverFactory;
 import driverFactory.remoteDriver.GridConfig;
 import org.openqa.selenium.WebDriver;
-import org.testng.TestNG;
-
-import org.testng.xml.XmlClass;
-import org.testng.xml.XmlSuite;
-import org.testng.xml.XmlTest;
+import org.testng.Reporter;
 import tools.properties.DefaultProperties;
 
 import java.io.IOException;
-import java.util.*;
 
-import static tools.listeners.TestNGListener.*;
-import static tools.properties.PropertiesHandler.readPropertyFile;
 
 public class Webdriver {
 
@@ -31,7 +24,8 @@ public class Webdriver {
     public Webdriver() throws IOException {
 
         if(EnvType.valueOf(DefaultProperties.platform.EnvironmentType()) == EnvType.LOCAL){
-            localDriverInit(DefaultProperties.capabilities.targetBrowserName());
+            localDriverInit(Reporter.getCurrentTestResult().
+                    getTestContext().getCurrentXmlTest().getParameter("browserName"));
         }
 
         if(EnvType.valueOf(DefaultProperties.platform.EnvironmentType()) == EnvType.GRID){
@@ -42,56 +36,12 @@ public class Webdriver {
             //remoteDriverInit(browserName);
         }
 
-        xmlGenerator();
+
 
         System.out.println("CURRENT THREAD: " + Thread.currentThread().getId() + ", " +
                 "DRIVER = " + getDriver());
     }
 
-
-    public void xmlGenerator() throws IOException {
-        XmlSuite suite = new XmlSuite();
-        suite.setName("WebDriver Suite");
-        suite.setThreadCount(2);
-        if(mode == CrossBrowserMode.PARALLEL){
-            suite.setParallel(XmlSuite.ParallelMode.TESTS);
-        }
-
-        Map<String, String> hashMap = new HashMap<String, String>();
-        hashMap.put("browserName", "chrome");
-
-        XmlTest chromeTest = new XmlTest(suite);
-        chromeTest.setName("Chrome Test");
-        chromeTest.setParameters(hashMap);
-        chromeTest.setThreadCount(0);
-        List<XmlClass> classes = new ArrayList<XmlClass>();
-        classes.add(new XmlClass("tests.TestClass"));
-        chromeTest.setXmlClasses(classes);
-
-        XmlTest firefoxTest = new XmlTest(suite);
-        firefoxTest.setName("Firefox Test");
-        firefoxTest.setThreadCount(0);
-
-        firefoxTest.setParameters(hashMap);
-        firefoxTest.setXmlClasses(classes);
-
-        List<XmlSuite> suites = new ArrayList<XmlSuite>();
-
-        suites.add(suite);
-        TestNG testng = new TestNG();
-        testng.setXmlSuites(suites);
-
-//        Path destination = Paths.get(".", "TestNG.xml");
-//        Files.createDirectories(destination.getParent());
-//        FileOutputStream outputStream = new FileOutputStream(destination.toString());
-//        outputStream.write(suite.toXml());
-//        outputStream.close();
-
-        //System.out.println(suite.toXml());
-        //testng.run();
-
-
-    }
 
     public void localDriverInit(String browserName){
         setDriver(getDriverFactory(DriverType.valueOf(browserName.toUpperCase()))
@@ -124,7 +74,6 @@ public class Webdriver {
         getDriver().manage().deleteAllCookies();
         getDriver().quit();
         Driver.remove();
-        //Runtime.getRuntime().exec("generateAllureReport.bat");
     }
 
 
