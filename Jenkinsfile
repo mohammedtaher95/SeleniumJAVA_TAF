@@ -18,7 +18,7 @@ node {
         readEnvProp.ENV_TYPE = params.Environment_Type
         readEnvProp.CROSS_BROWSER_MODE = params.Cross_Browser_Mode
         readWebCap.EXECUTION_METHOD = params.Execution_Method
-        readWebCap.TARGET_BROWSER_NAME = Target_Browser_Name
+        readWebCap.TARGET_BROWSER_NAME = params.Target_Browser_Name
 
         if (readEnvProp.ENV_TYPE == "GRID") {
             if (isUnix()) {
