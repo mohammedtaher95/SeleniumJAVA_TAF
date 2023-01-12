@@ -10,6 +10,10 @@ node {
     }
 
     stage('Starting Grid') { // for display purposes
+        echo "ENV_TYPE=$Environment_Type" >> src/main/resources/properties/ExecutionPlatform.properties
+        echo "CROSS_BROWSER_MODE=$Cross_Browser_Mode" >> src/main/resources/properties/ExecutionPlatform.properties
+        echo "EXECUTION_METHOD=$Execution_Method" >> src/main/resources/properties/WebCapabilities.properties
+        echo "TARGET_BROWSER_NAME=$Target_Browser_Name" >> src/main/resources/properties/WebCapabilities.properties
             if (isUnix()) {
                 sh "docker-compose up -d"
             }
@@ -52,6 +56,7 @@ node {
     stage('Results') {
         // testng '**/target/surefire-reports/TEST-*.xml'
         // archiveArtifacts 'target/*.jar'
+        allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']]
         step([$class: 'Publisher', reportFilenamePattern: '**/testng-results.xml'])
         
     }
