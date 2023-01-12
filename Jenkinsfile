@@ -69,7 +69,7 @@ node {
     stage('Results') {
         // testng '**/target/surefire-reports/TEST-*.xml'
         // archiveArtifacts 'target/*.jar'
-        allure includeProperties: false, jdk: '', results: [[path: 'target/allure-results']]
+        allure includeProperties: false, jdk: 'JAVA_HOME', results: [[path: 'target/allure-results']]
         step([$class: 'Publisher', reportFilenamePattern: '**/testng-results.xml'])
 
     }
