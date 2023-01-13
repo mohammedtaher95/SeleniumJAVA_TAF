@@ -1,11 +1,0 @@
-
-o	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ÿİ§×ıÿÿÿÿ8²¿Ç‘Ù0
-o	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¶øÙúÿÿÿÿ8³¿Ç‘Ù0
-j	java:S100"NRename this method name to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÌÓ©8³¿Ç‘Ù0
-V	java:S125"<This block of commented-out lines of code should be removed.(ÙÑ¨…ıÿÿÿÿ
-F
-java:S1128")Remove this unused import 'java.io.File'.(†Ğ¥Å8Ì‰÷—Ù0
-Q
-java:S1128"5Remove this unused import 'java.io.FileOutputStream'.(˜«ªg8Ì‰÷—Ù0
-N
-java:S1128	"1Remove this unused import 'java.util.Properties'.(¬µ²8¥ÆÃ–Ù0

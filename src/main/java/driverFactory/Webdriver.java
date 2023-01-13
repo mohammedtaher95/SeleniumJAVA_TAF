@@ -1,6 +1,5 @@
 package driverFactory;
 
-import constants.CrossBrowserMode;
 import constants.DriverType;
 import constants.EnvType;
 import driverFactory.localDriver.*;
@@ -13,10 +12,10 @@ import java.io.IOException;
 import java.time.Duration;
 
 
-public class Webdriver {
+public class Webdriver{
 
 
-    private static ThreadLocal<org.openqa.selenium.WebDriver> Driver = new ThreadLocal<>();
+    private static final ThreadLocal<org.openqa.selenium.WebDriver> Driver = new ThreadLocal<>();
 
 
     public Webdriver() throws IOException {
@@ -40,6 +39,7 @@ public class Webdriver {
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         getDriver().manage().window().maximize();
         getDriver().navigate().to(DefaultProperties.capabilities.baseURL());
+
     }
 
 
@@ -58,6 +58,10 @@ public class Webdriver {
 
     protected static void setDriver(WebDriver driver){
         Driver.set(driver);
+    }
+
+    public WebDriver makeAction(){
+        return Driver.get();
     }
 
     public static WebDriver getDriver(){
