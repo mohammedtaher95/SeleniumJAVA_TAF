@@ -25,14 +25,5 @@ public interface WebCapabilities extends Config, Accessible {
     @DefaultValue("normal")
     String executionMethod();
 
-//    @Override
-//    default void setProperty(String key, String value) {
-//        Properties updatedProps = new java.util.Properties();
-//        updatedProps.setProperty(key, value);
-//        Properties.ExecutionPlatform = ConfigFactory.create(ExecutionPlatform.class, updatedProps);
-//        // temporarily set the system property to support hybrid read/write mode
-//        System.setProperty(key, value);
-//        ReportManager.logDiscrete("Setting \"" + key + "\" property with \"" + value + "\".");
-//    }
 
 }
