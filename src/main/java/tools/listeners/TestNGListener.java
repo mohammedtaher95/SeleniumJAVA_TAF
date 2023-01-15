@@ -9,6 +9,7 @@ import org.testng.xml.XmlClass;
 import org.testng.xml.XmlSuite;
 import org.testng.xml.XmlTest;
 import tools.properties.DefaultProperties;
+import utilities.AllureBatchGenerator;
 import utilities.ScreenshotHelper;
 
 
@@ -96,6 +97,11 @@ public class TestNGListener implements IAlterSuiteListener, ITestListener, ISuit
 
     @Override
     public void onStart(ISuite suite) {
+        try {
+            AllureBatchGenerator.generateBatFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override

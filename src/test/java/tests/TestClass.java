@@ -25,6 +25,7 @@ public class TestClass {
 
     @BeforeMethod(description = "Setup Driver")
     public void setUp() throws IOException {
+        System.setProperty("BASE_URL", "http://demo.nopcommerce.com");
         driver = new driverFactory.Webdriver();
         navigateToURL("http://demo.nopcommerce.com");
     }
