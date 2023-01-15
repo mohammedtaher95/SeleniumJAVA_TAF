@@ -14,6 +14,7 @@ import utilities.ScreenshotHelper;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.InputStream;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -94,6 +95,10 @@ public class TestNGListener implements IAlterSuiteListener, ITestListener, ISuit
     }
 
     @Override
+    public void onStart(ISuite suite) {
+    }
+
+    @Override
     public void alter(List<XmlSuite> suites){
         try {
             initializeProperties();
@@ -158,7 +163,12 @@ public class TestNGListener implements IAlterSuiteListener, ITestListener, ISuit
         chromeTest.addParameter("browserName", "chrome");
         chromeTest.setThreadCount(1);
         chromeTest.setParallel(XmlSuite.ParallelMode.NONE);
+        ClassLoader stream = ClassLoader.getSystemClassLoader();
+        stream.getDefinedPackage("tests").getClass().getName();
+
         List<XmlClass> classes = new ArrayList<>();
+        //classes.forEach(c->);
+
         classes.add(new XmlClass("tests.TestClass"));
         chromeTest.setXmlClasses(classes);
 

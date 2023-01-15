@@ -1,9 +1,11 @@
 package driverFactory;
 
+import browserActions.BrowserActions;
 import constants.DriverType;
 import constants.EnvType;
 import driverFactory.localDriver.*;
 import driverFactory.remoteDriver.GridConfig;
+import elementActions.ElementActions;
 import org.openqa.selenium.WebDriver;
 import org.testng.Reporter;
 import tools.properties.DefaultProperties;
@@ -36,10 +38,16 @@ public class Webdriver{
         System.out.println("CURRENT THREAD: " + Thread.currentThread().getId() + ", " +
                 "DRIVER = " + getDriver());
 
+        BrowserActions actions = new BrowserActions();
+        ElementActions actions1 = new ElementActions();
+
         getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         getDriver().manage().window().maximize();
-        getDriver().navigate().to(DefaultProperties.capabilities.baseURL());
 
+        if(!DefaultProperties.capabilities.baseURL().isEmpty())
+        {
+            getDriver().navigate().to(DefaultProperties.capabilities.baseURL());
+        }
     }
 
 

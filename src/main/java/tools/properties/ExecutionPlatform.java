@@ -3,6 +3,7 @@ package tools.properties;
 import org.aeonbits.owner.Accessible;
 import org.aeonbits.owner.Config;
 import org.aeonbits.owner.Config.*;
+import org.aeonbits.owner.ConfigFactory;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -25,15 +26,5 @@ public interface ExecutionPlatform extends Config, Accessible {
     @DefaultValue("")
     String RemoteURL();
 
-
-//    @Override
-//    default void setProperty(String key, String value) {
-//        Properties updatedProps = new java.util.Properties();
-//        updatedProps.setProperty(key, value);
-//        Properties.ExecutionPlatform = ConfigFactory.create(ExecutionPlatform.class, updatedProps);
-//        // temporarily set the system property to support hybrid read/write mode
-//        System.setProperty(key, value);
-//        ReportManager.logDiscrete("Setting \"" + key + "\" property with \"" + value + "\".");
-//    }
 
 }

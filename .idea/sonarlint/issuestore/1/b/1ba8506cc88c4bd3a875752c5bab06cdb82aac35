@@ -1,0 +1,28 @@
+
+k	java:S117)"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹ŞÂúÿÿÿÿ
+k	java:S117)"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(¹ŞÂúÿÿÿÿ
+u
+java:S1104"ZMake successMessage a static final constant or non-public and provide accessors if needed.(”†Ãàıÿÿÿÿ
+q
+java:S1104"VMake logoutLink a static final constant or non-public and provide accessors if needed.(Ğñßóüÿÿÿÿ
+t	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ôÂõÿÿÿÿÿÿ
+h	java:S116"TRename this field "FirstName" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÄÖ®
+h	java:S116"SRename this field "LastName" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(å  «
+e	java:S116"PRename this field "Email" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Ë¨Çº
+h	java:S116"SRename this field "Password" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(×û‹
+t	java:S116"ZRename this field "ConfirmPassword" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ÁÀúşÿÿÿÿ
+m	java:S116"XRename this field "MyAccountLink" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(…ıù¹
+2
+java:S1116"Remove this empty statement.(å  «
+2
+java:S1116"Remove this empty statement.(Ë¨Çº
+2
+java:S1116"Remove this empty statement.(×û‹
+7
+java:S1116"Remove this empty statement.(ÁÀúşÿÿÿÿ
+7
+java:S1116"Remove this empty statement.(¥ó±æûÿÿÿÿ
+\
+java:S1128":Remove this unused import 'elementActions.ElementActions'.(„Àü‡ÿÿÿÿÿ8ÃóèİÚ0
+N
+java:S1128"2Remove this unused import 'io.cucumber.java.an.E'.(¯ãù58ÃóèİÚ0

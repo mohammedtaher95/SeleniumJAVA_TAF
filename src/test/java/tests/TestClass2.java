@@ -12,12 +12,9 @@ import utilities.UserFormData;
 
 import java.io.IOException;
 
-import static browserActions.BrowserActions.navigateToURL;
-import static elementActions.ElementActions.clickButton;
+public class TestClass2 {
 
-public class TestClass {
-
-    driverFactory.Webdriver driver;
+    Webdriver driver;
 
     HomePage home;
     UserFormData newUser;
@@ -25,8 +22,7 @@ public class TestClass {
 
     @BeforeMethod(description = "Setup Driver")
     public void setUp() throws IOException {
-        driver = new driverFactory.Webdriver();
-        navigateToURL("http://demo.nopcommerce.com");
+        driver = new Webdriver();
     }
 
     @Description("User can access registration page and register successfully")

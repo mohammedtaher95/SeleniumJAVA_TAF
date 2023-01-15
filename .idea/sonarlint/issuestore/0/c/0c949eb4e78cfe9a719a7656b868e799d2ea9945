@@ -1,0 +1,7 @@
+
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ÇèÔÏ
+m	java:S116"XRename this field "ContactUsLink" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ýçž¾
+Q	java:S125 "<This block of commented-out lines of code should be removed.(Ú°à¬
+E
+java:S1068
+"*Remove this unused "driver" private field.(š…ŒÅøÿÿÿÿ
