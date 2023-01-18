@@ -17,6 +17,8 @@ node {
         readWebCap = readProperties file: 'src/main/resources/properties/WebCapabilities.properties'
         readEnvProp.ENV_TYPE = params.Environment_Type
         readEnvProp.CROSS_BROWSER_MODE = params.Cross_Browser_Mode
+        readEnvProp.REMOTE_ENV_URL = params.Remote_URL
+        readEnvProp.RUN_ALL_TESTS = params.Run_All_Tests
         readWebCap.EXECUTION_METHOD = params.Execution_Method
         readWebCap.TARGET_BROWSER_NAME = params.Target_Browser_Name
 
