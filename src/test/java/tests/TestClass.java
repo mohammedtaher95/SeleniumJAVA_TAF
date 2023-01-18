@@ -3,6 +3,7 @@ package tests;
 import driverFactory.Webdriver;
 import io.qameta.allure.Description;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -12,6 +13,7 @@ import utilities.UserFormData;
 
 import java.io.IOException;
 
+import static browserActions.BrowserActions.getCurrentURL;
 import static browserActions.BrowserActions.navigateToURL;
 import static elementActions.ElementActions.clickButton;
 
@@ -45,6 +47,26 @@ public class TestClass {
                 .fillUserRegistrationForm(newUser.getFirstName(), newUser.getLastName(), newUser.getEmail(), newUser.getOldPassword())
                 .clickOnRegisterButton()
                 .validateThatSuccessMessageShouldBeDisplayed();
+
+    }
+
+    @Description("User can open login page successfully")
+    @Test(description = "User go to login page")
+    public void testMethod2(){
+
+        //clickButton(registerLink);
+
+        navigateToURL("http://demo.nopcommerce.com/login");
+        Assert.assertTrue(getCurrentURL().contains("login"));
+//        home = new HomePage(Webdriver.getDriver());
+//        newUser = new UserFormData();
+//        home.openRegistrationPage();
+//
+//        new UserRegistrationPage(Webdriver.getDriver())
+//                .validateThatUserNavigatedToRegistrationPage()
+//                .fillUserRegistrationForm(newUser.getFirstName(), newUser.getLastName(), newUser.getEmail(), newUser.getOldPassword())
+//                .clickOnRegisterButton()
+//                .validateThatSuccessMessageShouldBeDisplayed();
 
     }
 

@@ -28,6 +28,7 @@ public class PropertiesHandler {
 
         DefaultProperties.platform = ConfigFactory.create(ExecutionPlatform.class);
         DefaultProperties.capabilities = ConfigFactory.create(WebCapabilities.class);
+        DefaultProperties.reporting = ConfigFactory.create(Reporting.class);
 
         generateDefaultProperties();
     }
@@ -37,6 +38,7 @@ public class PropertiesHandler {
         FileUtils.forceMkdir(new File(defaultDirectory));
         File platformProperties = new File(platformPath);
         File capProperties = new File(webCapPath);
+        File reporting = new File(reportingPath);
 
         if(!platformProperties.exists()){
             FileOutputStream outputStream = new FileOutputStream(platformPath);
@@ -50,6 +52,14 @@ public class PropertiesHandler {
             FileOutputStream outputStream = new FileOutputStream(webCapPath);
             DefaultProperties.capabilities.store(outputStream, "######################################################"
                     + "\n" + "################ TAF Web Capabilities #################"
+                    + "\n" + "#######################################################");
+            outputStream.close();
+        }
+
+        if(!reporting.exists()){
+            FileOutputStream outputStream = new FileOutputStream(reportingPath);
+            DefaultProperties.reporting.store(outputStream, "######################################################"
+                    + "\n" + "################ TAF Reporting Options ################"
                     + "\n" + "#######################################################");
             outputStream.close();
         }

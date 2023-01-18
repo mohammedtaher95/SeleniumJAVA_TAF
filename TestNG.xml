@@ -4,6 +4,7 @@
   <test thread-count="1" name="Test">
     <parameter name="browserName" value="chrome"/>
     <classes>
+      <class name="tests.TestClass2"/>
       <class name="tests.TestClass"/>
     </classes>
   </test> <!-- Test -->
