@@ -10,7 +10,7 @@ import org.aeonbits.owner.Config.*;
 public interface Reporting extends Config, Accessible {
 
     @Key("OPEN_ALLURE_REPORT_AFTER_EXECUTION")
-    @DefaultValue("false")
+    @DefaultValue("true")
     boolean automaticOpenAllureReport();
 
     @Key("GENERATE_EMAILABLE_REPORT")
