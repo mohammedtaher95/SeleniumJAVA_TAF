@@ -14,10 +14,7 @@ which provides easy to use syntax, and easy to setup environment according to th
 ### Option 1: Using this Framework directly
 - Pull this repository and use it directly to write your tests
 
-### Option 2: Use a Template Project
-- Simply use this [project](https://github.com/mohammedtaher95/testJARProject) to get started
-
-### Option 3: Create New Project
+### Option 2: Create New Project
 #### Step 1: Setup Project
 - Temporary step: pull this repository, and run `mvn clean install` in your favorite IDE to create maven dependency 
   on your local Maven Repository, "This step is temporary till uploading this project to Maven Central"
